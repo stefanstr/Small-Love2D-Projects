@@ -1,6 +1,7 @@
 function love.load ()
-	love.math.setRandomSeed( love.timer.getTime( ) )
-	love.graphics.setBackgroundColor(255,255,255)
+	love.math.setRandomSeed( love.timer.getTime( ))
+	love.window.setTitle("Lighting Doodle by gestaltist")
+	--love.graphics.setBackgroundColor(255,255,255)
 	win_x, win_y = love.window.getDimensions()
 	square_size = 25
 	radius = 1
