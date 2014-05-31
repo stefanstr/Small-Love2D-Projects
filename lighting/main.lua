@@ -18,8 +18,8 @@ end
 
 function love.draw ()
 	mx, my = love.mouse.getPosition()
-	mx = math.floor(mx/square_size)
-	my = math.floor(my/square_size)
+	mx = math.ceil(mx/square_size)
+	my = math.ceil(my/square_size)
 	for x=1, table_x do
 		for y=1, table_y do
 			color = field[x][y]
@@ -51,7 +51,7 @@ function love.keypressed(key, isrepeat)
 	end
 	end
 	if key == "f" then radius = radius + 0.1 end
-	if key == "d" then radius = radius > 0 and (radius - 0.1) or 0.1 end
+	if key == "d" then radius = radius > 0.1 and (radius - 0.1) or 0.1 end
 end
 
 
