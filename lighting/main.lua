@@ -39,7 +39,7 @@ end
 function love.keypressed(key, isrepeat)
 	if key == "r" then square_size = square_size + 1 end
 	if key == "e" then 
-	square_size = square_size > 0 and (square_size - 1) or 1 
+	square_size = square_size > 1 and (square_size - 1) or 1 
 	table_x = math.ceil(win_x/square_size)
 	table_y = math.ceil(win_y/square_size)
 	field = {}
