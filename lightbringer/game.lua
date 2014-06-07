@@ -1,15 +1,16 @@
 function game()
 	map = map or Map.newMap(settings.map_size, settings.break_even)
-	map:addLightSources(30) 
+	map:addObjects(30, LightSource.newLightSource, settings.max_lightsource_strength) 
+	map:addObjects(30, Darkling.newDarkling, settings.max_darkling_strength, 1)
 	local offsetx = 1
 	local offsety = 1
-	ls = LightSource.newLightSource(5)
-	print(ls:getStrength())
+	
 	function love.draw()
 		map:displayMap(offsetx, offsety)
 	end
 
 	function love.update(dt)
+		Darkling.updateDarklings(map, dt)
 	end
 
 	function love.keypressed (key, isrepeat)

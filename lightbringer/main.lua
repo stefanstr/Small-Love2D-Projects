@@ -85,6 +85,8 @@ require("game") -- plays a new game
 
 function love.load ()
 	love.keyboard.setKeyRepeat( true )
+	math.random(os.time())
+	love.math.setRandomSeed(os.time())
 	-- makes the window square
 	window_dimension, tiles_in_window = calculate_game_dimensions()
 	print("Setting window dimensions to ", window_dimension)

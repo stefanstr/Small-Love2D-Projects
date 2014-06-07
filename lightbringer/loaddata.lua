@@ -85,6 +85,7 @@ default_settings.colors.menu_title = {255, 255, 255, 125}
 default_settings.colors.tile_empty = {255, 255, 255}
 default_settings.colors.tile_wall = {0, 0, 0}
 default_settings.colors.lightsource = {255, 255, 0}
+default_settings.colors.darkling = {0, 0, 0}
 
 default_settings.font_size = 20
 default_settings.title_font_size = 40
@@ -92,6 +93,8 @@ default_settings.break_even = 0.65 -- needed for map generation
 default_settings.tile_size = 32
 default_settings.map_size = 100
 default_settings.max_lightsource_strength = 10
+default_settings.max_darkling_strength = 5
+default_settings.game_speed = 5
 
 local mt = {}
 mt.__index = default_settings

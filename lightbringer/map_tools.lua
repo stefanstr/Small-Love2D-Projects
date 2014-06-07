@@ -27,28 +27,26 @@ function Map.displayMap (self, start_w, start_h)
 			else
 				love.graphics.setColor(unpack(settings.colors.tile_empty)) 			
 			end
-			--print("displaying coordinates ", w+start_w, h + start_h)
 			love.graphics.rectangle("fill", w * settings.tile_size, h * settings.tile_size, settings.tile_size, settings.tile_size)
+		end
+	end
+	for w=0, tiles_in_window-1 do
+		for h=0, tiles_in_window-1 do
 			if self:getObject(w + start_w, h + start_h) then
-				if self:getObject(w + start_w, h + start_h).type == "LightSource" then
-					local shine = self:getObject(w + start_w, h + start_h):getStrength() / settings.max_lightsource_strength * 255
-					local r, g, b = unpack(settings.colors.lightsource)
-					love.graphics.setColor(r, g, b, shine)
-					love.graphics.circle("fill", (w + 0.5) * settings.tile_size, (h + 0.5) * settings.tile_size, settings.tile_size/2)
-				end
+				self:getObject(w + start_w, h + start_h):draw(-start_w, -start_h)
 			end
 		end
 	end
 end
 
-function Map.addLightSources (self, amount)
+function Map.addObjects (self, amount, constructor, max_strength, ...)
 	local left = amount
 	while left > 0 do
 		for w=1, self.size do
 			for h=1, self.size do
 				if not self:getWall(w, h) and not self:getObject(w, h) and math.random(0, self.size^2) < amount then
-					local strength = math.random (1, settings.max_lightsource_strength)
-					self:setObject(w, h, LightSource.newLightSource (strength))
+					local strength = math.random (1, max_strength)
+					self:setObject(w, h, constructor(w, h, strength, ...))
 					left = left - 1
 				end
 			end
